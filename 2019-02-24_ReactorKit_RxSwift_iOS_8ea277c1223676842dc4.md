@@ -1,0 +1,213 @@
+<!--
+title:   ReactorKit で View をテストしやすくする
+tags:    ReactorKit,RxSwift,iOS
+id:      8ea277c1223676842dc4
+private: false
+-->
+# ReactorKit とは
+
+[ReactorKit](http://reactorkit.io/) は、Swift アプリケーション開発向けのフレームワークのひとつです。RxSwift と Flux（単方向フロー）とを組み合わせた、軽量なフレームワークとなっています。
+
+ReactorKit の設計の目標は以下の3点です。
+
+* Testability : テスト容易性、View とロジックの分離により実現する
+* Start Small : アプリの一部だけでも適用できる
+* Less Typing : コードを複雑にしない
+
+この記事では、特に Testability に注目して ReactorKit を見てみます。
+
+# 構成
+
+ReactorKit の構成は以下のようになっています。
+
+![arch.png](https://qiita-image-store.s3.amazonaws.com/0/6204/8f03f0b2-00a7-80d9-2473-efecf667f1a4.png)
+
+`View` と `Reactor` とのふたつで成り立っています。両者間のデータの受け渡しのためのオブジェクトとして、`Action` と `State` があります。
+
+# View と Reactor の実装
+
+`View` と `Reactor` は、それぞれ次のような責務を持ちます。
+
+* `View` の責務 (1)
+    * UI 操作を受け取る → `Action` として `Reactor` に渡す
+* `Reactor` の責務
+    * `Action` を受け取る → 処理を行い `State` を生成する
+* `View` の責務 (2)
+    * `State` を受け取る → UI に表示する
+
+iOS アプリでは、これらの責務を `UIViewController` が抱え込みがちです。それを `View` と `Reactor` に分離しています。
+
+* `UIViewController` には `View` の責務だけを持たせる
+* `Reactor` は別オブジェクトとして分離（なお、`Reactor` は UIKit は使わない）
+
+これにより、Testability が向上します。特に `View` の Testability について後ほど触れます。
+
+## View プロトコル
+
+`View` プロトコルには `bind` メソッドが定義されています。
+
+```swift
+class MyViewController: View {
+    func bind(reactor: MyReactor) {
+        // ここで Reactor とのバインディングを行う
+        // RxSwift を活用
+    }
+}
+```
+
+## Reactor プロトコル
+
+`Reactor` プロトコルには `Action` と `State` が定義されています。
+
+```swift
+class MyReactor: Reactor {
+    enum Action {
+        case myAction
+        case myActionWithArg(Int)
+    }
+    struct State {
+        var myValue1 = ""
+        var myValue2 = false
+    }
+}
+```
+
+## View の実装 (1)
+
+`View` の責務 (1) を実装するには、UI 操作を `Reactor` が持つ `Action` にバインドすればよいです。
+
+```swift
+func bind(reactor: MyReactor) {
+    myButton.rx.tap
+        .map { Reactor.Action.myAction }
+        .bind(to: reactor.action)
+        .disposed(by: self.disposeBag)
+```
+
+なお、バインド先の `reactor.action` は `ActionSubject` です（RxSwift が持つ `Subject` の ReactorKit による派生）。
+
+## View の実装 (2)
+
+`View` の責務 (2) を実装するには、`Reactor` が持つ `State` を UI 表示にバインドすればよいです。
+
+```swift
+func bind(reactor: MyReactor) {
+    reactor.state
+        .map { $0.myValue1 }
+        .bind(to: myLabel.rx.text)
+        .disposed(by: self.disposeBag)
+```
+
+なお、バインド元の `reactor.state` は RxSwift の `Observable` です。
+
+## Reactor の実装
+
+`Reactor` の責務の実装は、`mutate()` と `reduce()` の二段階に分けて実装します。
+
+* `mutate()` : `Action` を受け取って `Observable<Mutation>` を返す
+* `reduce()` : `Mutation` と前の `State` を受け取って `State` を返す
+
+`Mutation` は `Reactor` 内部で使う、状態変化をあらわすオブジェクトです。
+
+## mutate()
+
+* `Action` を受け取って `Observable<Mutation>` を返す
+* 具体的な処理（Web API 実行、データベースアクセス、など）を行う `Observable` を生成する
+
+実際に処理を行うかどうかの判断などは `Reactor` の役目です。これにより、`View` 側では `Action` を生成するかどうかを判断しないため、`View` の実装がバインディングだけですみます。
+
+## reduce()
+
+* `Mutation` と前の `State` を受け取って `State` を返す
+* 処理の結果と前の状態を考慮して次の状態を決めるのが役目
+
+前の状態は `Reactor` が持っています。これにより、`View` 側では前の状態を考慮するといった処理が不要になるため、`View` の実装がバインディングだけですみます。
+
+# View の単体テスト
+
+さて、`View` の Testability を考えましょう。
+
+そもそも一般に、単体テストでは何をテストするべきでしょうか？ ここでは、「そのオブジェクトの責務を果たしているか」をテストするべき、と考えることにします。
+
+そこで、以下のふたつについてテストすることを考えます。
+
+* `View` の責務 (1) : UI 操作 → `Action`
+* `View` の責務 (2) : `State` → UI 表示
+
+## View のテスト (1) : Action
+
+責務 (1) のテストでは、コードで UI 操作を発生させて、その結果として、`Reactor` に `Action` オブジェクトが渡されたことを確認します。
+
+コードで UI 操作を発生させるには、`UIControl` の `sendActions` メソッドを使えばよいです。
+
+`Reactor` に `Action` オブジェクトが渡されたことを確認するには、`Reactor` のスタブを用意すればよいです。実は ReactorKit ではスタブがすでに用意されています。
+
+これにより、以下のようにテストが書けます。
+
+```swift
+func testMyAction() {
+    let reactor = MyReactor()
+    reactor.stub.isEnabled = true
+    let view = MyView()
+    view.reactor = reactor
+
+    view.myButton.sendActions(for .touchUpInside)
+    XCTAssertEqual(reactor.stub.actions.last, .myAction)
+}
+```
+
+## View のテスト (2) : State
+
+責務 (2) のテストでは、コードで `Reactor` の `State` を変化させて、その結果として、UI 表示が変更されたことを確認します。
+
+やはり `Reactor` のスタブを活用して、コードで Reactor の State 変化を起こすことができます。
+
+これにより、以下のようにテストが書けます。
+
+```swift
+func testMyAction() {
+    let reactor = MyReactor()
+    reactor.stub.isEnabled = true
+    let view = MyView()
+    view.reactor = reactor
+
+    reactor.stub.state.value = MyReactor.State(myValue1: "abc")
+    XCTAssertEqual(view.myLabel.text, "abc")
+}
+```
+
+## View のテストまとめ
+
+* 何がテストできたのか？ : `View` が責務を果たしていること
+* `View` の実装でいえば、バインディングがちゃんとできていること
+
+ところで実のところ、そもそもこの単体テストは必要なのかという疑問も生じます。ReactorKit を活用してシンプルなオブジェクトになった結果、`View` はバインディングしかしていないわけですから、単純すぎてテスト不要というレベルになっているとも言えます。
+
+それでも単体テストを書いておくほうがメリットがあるというのが私見です。ただ、実際にテストコードを書くかどうかはケースバイケースかもしれません。
+
+# Reactor の単体テスト（概略）
+
+`Reactor` のテストについても触れておきます。ただ、これは ReactorKit の話というよりも一般論になってしまうので、概略にとどめます。
+
+先ほどと同様、「そのオブジェクトの責務を果たしているか」をテストすることを考えます。つまり、以下についてテストすることを考えます。
+
+* `Reactor` の責務 : `Action` → `State`
+
+ここで、`Reactor` は `View` への依存がないため、`View` とは独立してテスト可能であるというのが ReactorKit の恩恵です。
+
+実際にテストを書くには、コードで `Action` を発生させて、`State` 変更を確認します。
+
+しかし、`Reactor` の中で Web API 実行、データベースアクセス、などがあると単体テストはしづらいです。そこで、それらの処理を Service として `Reactor` の外に切り出しておく必要があります。
+
+そのうえで、Service をスタブ化することで `Reactor` が単体テスト可能になります。
+
+# まとめ
+
+* 複数の責務を持ちがちな `UIViewController` について、ReactorKit で `View` と `Reactor` に責務を分離することができます。
+* 適切な分離により、`View` や `Reactor` がテスト可能になります。
+
+※ 本記事は、[Mobile Act OSAKA #8](https://mobileact.connpass.com/event/114158/) で登壇して発表した内容を記事の形にしたものです。
+
+# 補足
+
+RxSwift のバインディングについては、別記事を参考にしてもらえればと思います。→ [RxSwift 再入門](2018-07-29_RxSwift_RxSwift4_444d6dd7386b2949c06b.md)
