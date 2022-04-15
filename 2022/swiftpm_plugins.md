@@ -1,7 +1,10 @@
 <!--
-title: Swift Package Managerのプラグイン機能
-tags:  SwiftPackageManager,SwiftPM,Swift,Xcode
+title:   Swift Package Managerのプラグイン機能
+tags:    Swift,SwiftPM,SwiftPackageManager,Xcode
+id:      1c2cec0903fea2e03344
+private: false
 -->
+
 2022年3月にSwift 5.6がリリースされました。
 Swift 5.6で、Swift Package Manager（以下、SwiftPMと呼びます）に対してプラグイン機能が追加されました。
 このプラグイン機能について解説します。
