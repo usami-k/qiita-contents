@@ -1,7 +1,10 @@
 <!--
 title:   Swift Regexでキャプチャや名前付きキャプチャを使う
 tags:    Swift,regex,正規表現
+id:      5a13d12ffc332ddf0512
+private: false
 -->
+
 
 Swift 5.7で、Swift Regexが導入されます。
 これまでSwiftで正規表現を使う場合は `NSRegularExpression` を使っていましたが、言語組み込みの機能としてサポートされます。
