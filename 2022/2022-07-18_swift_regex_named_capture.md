@@ -67,6 +67,8 @@ if let match {
 
 連番の代わりに名前で参照できるようになり、分かりやすくなりました。
 
+なお、名前付きキャプチャの記法はもうひとつあります。それは `(?P<name>pattern)` という書き方で、名前付きキャプチャを最初にサポートしたPythonはこの記法でした。上述の `(?<name>pattern)` という書き方は、.NETが名前付きキャプチャをサポートしたときの記法です。
+
 ## Regexビルダーでのキャプチャ
 
 Regexビルダーの場合、キャプチャは `Capture` を使って書きます。
@@ -173,6 +175,8 @@ if let match {
 }
 ```
 
+なお、名前付きキャプチャの後方参照の記法はもうひとつあります。それは `(?P=name)` という書き方で、Pythonはこの記法でした。上述の `\k<name>` という書き方は.NETの記法です。
+
 ## Regexビルダーでの後方参照
 
 Regexビルダーの場合、後方参照は `Capture` を使って書きます。名前付きキャプチャを使う必要があります。
@@ -197,6 +201,8 @@ if let match {
 
 - [Swift Regex](https://swiftregex.com/) : Regular Expression Tester with highlighting for Swift Regex
 - [正規表現で名前付きキャプチャを使う - Qiita](https://qiita.com/jnchito/items/cceb669cb06fc044f411)
+- [O'Reilly Japan - 正規表現クックブック](https://www.oreilly.co.jp/books/9784873114507/)
+- [O'Reilly Japan - 詳説 正規表現 第3版](https://www.oreilly.co.jp/books/9784873113593/)
 
 また、筆者がSwift Regexについて勉強会で登壇したスライドも挙げておきます。
 
