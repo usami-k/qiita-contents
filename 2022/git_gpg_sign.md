@@ -1,7 +1,10 @@
 <!--
 title:   GitのコミットにGnuPGで署名する
-tags:    Git,GitHub,gpg,GnuPG
+tags:    Git,GitHub,GnuPG,gpg
+id:      6b816db27b7661611d59
+private: false
 -->
+
 Gitのコミットには、ユーザのメールアドレスが記録されています。メールアドレスを使って、誰がコミット作成者（Author）やコミット実施者（Committer）であるかを判別する仕組みになっています。
 
 しかし、メールアドレスは各自が `git config` で設定する属性です。実のところ、設定を変更すれば他者へのなりすましが簡単にできてしまいます。
