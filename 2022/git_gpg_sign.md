@@ -4,6 +4,7 @@ tags:    Git,GitHub,GnuPG,gpg
 id:      6b816db27b7661611d59
 private: false
 -->
+
 Gitのコミットには、ユーザのメールアドレスが記録されています。メールアドレスを使って、誰がコミット作成者（Author）やコミット実施者（Committer）であるかを判別する仕組みになっています。
 
 しかし、メールアドレスは各自が `git config` で設定する属性です。実のところ、設定を変更すれば他者へのなりすましが簡単にできてしまいます。
@@ -14,7 +15,7 @@ Gitのコミットには、ユーザのメールアドレスが記録されて�
 
 本記事では、macOSでGitのコミットに署名し、GitHub上で「Verified」バッジが表示されるよう設定する方法を紹介します。
 
-## 必要なツールのインストール
+# 必要なツールのインストール
 
 以下、macOSを使う前提とします。また、[Homebrew](https://brew.sh/)が導入されている前提とします。
 
@@ -34,7 +35,7 @@ brew install pinentry-mac
 
 [GPGTools/pinentry](https://github.com/GPGTools/pinentry)は、パスフレーズの入力をサポートするソフトウェアです。pinentry-macはpinentryのmacOS版で、特にパスフレーズをキーチェーンに保存する機能が便利です。
 
-## GPGキーの生成
+# GPGキーの生成
 
 署名に使う公開鍵・秘密鍵のペアを生成します。先ほどインストールしたGnuPGを使います。
 
@@ -44,13 +45,13 @@ GitHubのドキュメント「[新しい GPG キーを生成する - GitHub Docs
 
 GPGキーのパスフレーズは、後でコミットへの署名のときに使うので、忘れないようにしてください。
 
-## GitHubアカウントの設定
+# GitHubアカウントの設定
 
 生成した鍵ペアの公開鍵をGitHubアカウントに追加します。この設定により、GitHub上で署名つきコミットに対して「Verified」バッジが表示されます。
 
 GitHubのドキュメント「[Adding a GPG key to your GitHub account - GitHub Docs](https://docs.github.com/ja/authentication/managing-commit-signature-verification/adding-a-gpg-key-to-your-github-account)」に手順が詳しく書いてありますので、このとおりに実行します。
 
-## Gitの設定
+# Gitの設定
 
 生成した鍵ペアのキーIDをGitの設定に追加します。この設定により、Gitのコミットに対して指定の秘密鍵で署名できます。
 
@@ -58,7 +59,7 @@ GitHubのドキュメント「[Git へ署名キーを伝える - GitHub Docs](ht
 
 ただし、今回は既にpinentry-macをインストールしています。このため、「GPGスイートを使用していない場合は〜」と記載がある、シェルで環境変数 `GPG_TTY` を設定する手順はスキップします。代わりにpinentry-macを設定する手順を実行します。
 
-## コミットへの署名
+# コミットへの署名
 
 Gitでコミットを署名つきコミットにするには、次のようにします。これですべてのコミットが署名つきになります。
 
@@ -75,13 +76,13 @@ git config --global commit.gpgsign true
 なお、すべてのコミットを署名つきにするのではなく特定のコミットだけ署名つきにするには、上記の設定をせずにおき、コミット時に `git commit -S` と `-S` オプションをつけます。しかし、通常はすべてのコミットを署名つきにするのが良いでしょう。
 
 
-## まとめ
+# まとめ
 
 以上で、Gitのコミットに署名し、GitHub上で「Verified」バッジが表示されるよう設定できました。
 
 ここではmacOSでの方法を紹介しましたが、それ以外のOSについてはGitHubのドキュメントか別の記事を参照してください。
 
-## 参考文献
+# 参考文献
 
 - [コミット署名の検証を管理する - GitHub Docs](https://docs.github.com/ja/authentication/managing-commit-signature-verification)
 - [🔰【Win/Mac】Gitコミットに署名を付けよう！✍ - Qiita](https://qiita.com/heppokofrontend/items/13f269f536fdaf9226c4)
