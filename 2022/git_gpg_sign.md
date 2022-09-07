@@ -11,7 +11,7 @@ Gitのコミットには、ユーザのメールアドレスが記録されて�
 
 なりすましの対策として、Gitのコミットにデジタル署名をすることで、なりすましではなく本人であることを示せます。特に、GitHubで設定しておけば、署名つきコミットに対して「Verified」バッジが表示されます。
 
-![GitHubのVerifiedバッジ](images/git_gpg_sign_verified.png)
+![GitHubのVerifiedバッジ](git_gpg_sign_images/git_gpg_sign_verified.png)
 
 本記事では、macOSでGitのコミットに署名し、GitHub上で「Verified」バッジが表示されるよう設定する方法を紹介します。
 
@@ -69,7 +69,7 @@ git config --global commit.gpgsign true
 
 署名つきコミットの際、GPGキーのパスフレーズを聞かれます。pinentry-macの設定ができていれば、次のようなダイアログが表示されますのでパスフレーズを入力します。なお、「Save in Keychain」を有効にしておくと、パスフレーズがキーチェーンに保存されます。
 
-![pinentry-macのダイアログ](images/git_gpg_sign_pinentry.png)
+![pinentry-macのダイアログ](git_gpg_sign_images/git_gpg_sign_pinentry.png)
 
 パスフレーズは、コミットごとに聞かれるわけではありません。一度入力するとgpg-agentが覚えてくれます。そのため、署名つきコミットにしたからといって、コミットの手間がそれほど増えるわけではありません。
 
