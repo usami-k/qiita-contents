@@ -14,7 +14,7 @@ private: false
 
 XcodeでiOS Appを新規作成すると、`.xcodeproj` という拡張子のバンドル（フォルダ）ができます。xcodeprojバンドルの中に `project.pbxproj` というファイルがあり、これにプロジェクトの情報が保存されます。
 
-```shellsession title="Xcodeプロジェクト形式の構成ファイル（一部省略）"
+```shellsession:Xcodeプロジェクト形式の構成ファイル（一部省略）
 XcodeAppSample/
 ├── XcodeAppSample/
 │   ├── ContentView.swift
@@ -37,7 +37,7 @@ XcodeプロジェクトをGit（あるいは他のバージョン管理ツール
 
 ![コンフリクト発生](usami_swiftpm_images/Conflict.png)
 
-この問題を回避する手段としては、`project.pbxproj` ファイルを生成するツールを使う方法が挙げられます。たとえば、XcodeGen<span class="footnote">https://github.com/yonaskolb/XcodeGen</span>はYAMLファイルから、Tuist<span class="footnote">https://tuist.io/</span>はSwiftファイルから、`project.pbxproj` ファイルを生成します。これらを使うことで `project.pbxproj` ファイルを直接Gitで管理せずにすみます。
+この問題を回避する手段としては、`project.pbxproj` ファイルを生成するツールを使う方法が挙げられます。たとえば、[XcodeGen](https://github.com/yonaskolb/XcodeGen)はYAMLファイルから、[Tuist](https://tuist.io/)はSwiftファイルから、`project.pbxproj` ファイルを生成します。これらを使うことで `project.pbxproj` ファイルを直接Gitで管理せずにすみます。
 
 別の回避手段として、Swiftパッケージを利用する方法があります。Swiftソースコードを直接Xcodeプロジェクトの管理下には入れずに、Swiftパッケージで管理するようにします。こうすることで、単なるファイルの追加や削除では `project.pbxproj` ファイルが更新されないため、コンフリクトが起こりにくくなります。
 
@@ -47,13 +47,13 @@ XcodeプロジェクトをGit（あるいは他のバージョン管理ツール
 
 それでは次に、新しいプロジェクト形式について見ていきましょう。ここでは、「Swift Playgrounds App形式」と呼ぶことにします。
 
-Swift Playgroundsアプリ<span class="footnote">https://www.apple.com/jp/swift/playgrounds/ iPad版とMac版があります。</span>のバージョン4以降でAppが作成できるようになりました。これを使ってAppを新規作成すると、Swift Playgrounds App形式でプロジェクトが作成されます。
+[Swift Playgroundsアプリ](https://www.apple.com/jp/swift/playgrounds/)（iPad版とMac版があります）のバージョン4以降でAppが作成できるようになりました。これを使ってAppを新規作成すると、Swift Playgrounds App形式でプロジェクトが作成されます。
 
 実はXcodeでも、バージョン13.2以降でSwift Playgrounds Appが作成できるようになりました。XcodeでSwift Playgrounds Appを新規作成すると、Xcodeプロジェクト形式ではなくSwift Playgrounds App形式でプロジェクトが作成されます。
 
 Swift Playgrounds App形式では、`.swiftpm` という拡張子のバンドルができます。では、実際にプロジェクトを作成して、その中身を探検してみましょう。
 
-```shellsession title="Swift Playgrounds App形式の構成ファイル"
+```shellsession:Swift Playgrounds App形式の構成ファイル
 PlaygroundsAppSample.swiftpm/
 ├── .swiftpm/
 ├── ContentView.swift
@@ -67,7 +67,7 @@ Xcodeプロジェクト形式では、Swiftソースコードのフォルダとx
 
 バンドルの中に、ドットから始まる名前の `.swiftpm` というフォルダがあります。この中身ものぞいてみましょう。
 
-```shellsession title=".swiftpmフォルダの内容（一部省略）"
+```shellsession:.swiftpmフォルダの内容（一部省略）
 .swiftpm/
 ├── playgrounds/
 │   ├── CachedManifest.plist
@@ -97,7 +97,7 @@ Xcodeプロジェクト形式のときの `project.pbxproj` ファイルに当�
 
 では、`Package.swift` ファイルの内容を見てみましょう。
 
-```swift title="Swift Playgrounds App形式のPackage.swiftの内容"
+```swift:Swift Playgrounds App形式のPackage.swiftの内容
 // swift-tools-version: 5.6
 
 // WARNING:
@@ -147,7 +147,7 @@ let package = Package(
 
 また、インポートしているモジュールが `PackageDescription` だけではなく、見慣れない `AppleProductTypes` というものがあります。しかし、`AppleProductTypes` の定義やドキュメントをXcodeで簡単に見ることはできないようです。
 
-その後 `package` が定義されているのは通常のSwiftパッケージと同様です。ただ、`products` にある `.iOSApplication` が目立ちます。通常のSwiftパッケージでは `.executable` か `.library` であるところです<span class="footnote">なお、Swift 5.6で `.plugin` が追加されています。</span>。しかし、`.iOSApplication` の定義やドキュメントをXcodeで簡単に見ることはできないようです。
+その後 `package` が定義されているのは通常のSwiftパッケージと同様です。ただ、`products` にある `.iOSApplication` が目立ちます。通常のSwiftパッケージでは `.executable` か `.library` であるところです（なお、Swift 5.6で `.plugin` が追加されています）。しかし、`.iOSApplication` の定義やドキュメントをXcodeで簡単に見ることはできないようです。
 
 こうして見ると、内容はSwiftソースコードとして読めるものの、自由に編集できるわけではないようです。また、定義が隠されていて分からないものもあります。
 
@@ -165,7 +165,7 @@ let package = Package(
 
 `AppleProductTypes` モジュールはSwift PlaygroundsアプリやXcodeの中にあるようで、Xcode上では簡単に定義を調べることはできません。Xcode.appの中身をのぞいてみると、次の場所でインターフェースの定義を見つけることができます。
 
-```shellsession title="AppleProductTypesのインターフェース"
+```shellsession:AppleProductTypesのインターフェース
 /Applications/Xcode.app/Contents/PlugIns/
   IDESwiftPackageCore.framework/Versions/Current/Frameworks/
   SwiftPM.framework/SharedSupport/ManifestAPI/
@@ -174,7 +174,7 @@ let package = Package(
 
 その内容を整理すると、どうやら `iOSApplication` の定義は次のようになっています。
 
-```swift title="iOSApplicationの定義"
+```swift:iOSApplicationの定義
 public static func iOSApplication(
     name: String,
     targets: [String],
@@ -228,4 +228,3 @@ Swift PlaygroundsアプリでもXcodeでも、Swiftパッケージを追加で�
 Swift Playgrounds App形式はSwiftパッケージをベースにしたプロジェクト形式です。従来のXcodeプロジェクト形式に比べて制限が多く、まだ従来のXcodeプロジェクトを置き換えるのは難しそうです。ただ、制限が問題にならない範囲ではiOSアプリ開発が可能です。良い点もあるので、今後の発展に期待したいところです。
 
 本記事は技術書典で配布している「[ゆめみ大技林 '22](https://techbookfest.org/product/9g7iLPz8dzmL2QrrbedbxG)」に収録した記事です。他のメンバーの記事もありますので、ぜひご覧ください。
-
