@@ -2,7 +2,7 @@
 title:   Swift Playgrounds App
 tags:    Swift,SwiftPM,Xcode,iOS
 id:      cf77148d7508fb0ca93c
-private: true
+private: false
 -->
 2021年から、iPadのSwift Playgroundsアプリを使ってiOSアプリの開発ができるようになりました。この際、従来のやり方であるXcodeを使ったiOSアプリの開発とは異なる、新しいプロジェクト形式が使われます。
 
@@ -226,3 +226,6 @@ Swift PlaygroundsアプリでもXcodeでも、Swiftパッケージを追加で�
 ## まとめ
 
 Swift Playgrounds App形式はSwiftパッケージをベースにしたプロジェクト形式です。従来のXcodeプロジェクト形式に比べて制限が多く、まだ従来のXcodeプロジェクトを置き換えるのは難しそうです。ただ、制限が問題にならない範囲ではiOSアプリ開発が可能です。良い点もあるので、今後の発展に期待したいところです。
+
+本記事は技術書典で配布している「[ゆめみ大技林 '22](https://techbookfest.org/product/9g7iLPz8dzmL2QrrbedbxG)」に収録した記事です。他のメンバーの記事もありますので、ぜひご覧ください。
+
