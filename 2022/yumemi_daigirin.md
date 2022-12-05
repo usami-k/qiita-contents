@@ -1,8 +1,10 @@
 <!--
 title:   「ゆめみ大技林 '22」ができるまで
-tags:    ゆめみ,技術書典,技術書,Swift,iOS
+tags:    Swift,iOS,ゆめみ,技術書,技術書典
+id:      131e22d355cda4563e3e
 private: true
 -->
+
 今年9月に開催された[技術書典13](https://techbookfest.org/event/tbf13)で、ゆめみの有志メンバーで「[ゆめみ大技林 '22](https://techbookfest.org/product/9g7iLPz8dzmL2QrrbedbxG)」を出展しました。どのように取り組んだのかを改めて振り返ってみます。
 
 なお、「ゆめみ大技林 '22」は電子版と紙書籍版を無料で配布しました。電子版は現在も引き続き無料で配布しておりますので、ぜひご覧ください。
