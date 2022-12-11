@@ -9,7 +9,7 @@ Gitのコミットには、ユーザのメールアドレスが記録されて�
 
 しかし、メールアドレスは各自が `git config` で設定する属性です。実のところ、設定を変更すれば他者へのなりすましが簡単にできてしまいます。
 
-なりすましの対策として、Gitのコミットにデジタル署名をすることで、なりすましではなく本人であることを示せます。特に、GitHubで設定しておけば、署名つきコミットに対して「Verified」バッジが表示されます。
+なりすましの対策として、Gitのコミットにデジタル署名をすることで、なりすましではなく本人であることを示せます。とくに、GitHubで設定しておけば、署名つきコミットに対して「Verified」バッジが表示されます。
 
 ![GitHubのVerifiedバッジ](git_gpg_sign_images/git_gpg_sign_verified.png)
 
@@ -33,7 +33,7 @@ brew install gnupg
 brew install pinentry-mac
 ```
 
-[GPGTools/pinentry](https://github.com/GPGTools/pinentry)は、パスフレーズの入力をサポートするソフトウェアです。pinentry-macはpinentryのmacOS版で、特にパスフレーズをキーチェーンに保存する機能が便利です。
+[GPGTools/pinentry](https://github.com/GPGTools/pinentry)は、パスフレーズの入力をサポートするソフトウェアです。pinentry-macはpinentryのmacOS版で、とくに、パスフレーズをキーチェーンに保存する機能が便利です。
 
 # GPGキーの生成
 
@@ -43,7 +43,7 @@ GitHubのドキュメント「[新しい GPG キーを生成する - GitHub Docs
 
 もし鍵の種類で迷うようなら、RSA4096ビットがよく見かける無難な選択でしょう。もちろん、RSA以外を選んでも良いです。
 
-GPGキーのパスフレーズは、後でコミットへの署名のときに使うので、忘れないようにしてください。
+GPGキーのパスフレーズは、あとでコミットへの署名のときに使うので、忘れないようにしてください。
 
 # GitHubアカウントの設定
 
@@ -57,7 +57,7 @@ GitHubのドキュメント「[Adding a GPG key to your GitHub account - GitHub 
 
 GitHubのドキュメント「[Git へ署名キーを伝える - GitHub Docs](https://docs.github.com/ja/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key)」に手順が詳しく書いてありますので、このとおりに実行します。
 
-ただし、今回は既にpinentry-macをインストールしています。このため、「GPGスイートを使用していない場合は〜」と記載がある、シェルで環境変数 `GPG_TTY` を設定する手順はスキップします。代わりにpinentry-macを設定する手順を実行します。
+ただし、今回はすでにpinentry-macをインストールしています。このため、「GPGスイートを使用していない場合は〜」と記載がある、シェルで環境変数 `GPG_TTY` を設定する手順はスキップします。代わりにpinentry-macを設定する手順を実行します。
 
 # コミットへの署名
 
