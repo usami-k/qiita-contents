@@ -1,8 +1,10 @@
 <!--
 title:   Swift＋WebAssembly
 tags:    Swift,WebAssembly,wasm
+id:      0b1cae5dca2a0c9d47ad
 private: true
 -->
+
 
 Swift言語は、アプリケーションやコマンドラインツールでの活用がよく知られており、サーバサイドでの活用もあります。実は、WebAssemblyを使うとWebフロンドエンドでの活用も可能になります。
 
