@@ -2,7 +2,7 @@
 title:   Swift＋WebAssembly
 tags:    Swift,WebAssembly,wasm
 id:      0b1cae5dca2a0c9d47ad
-private: true
+private: false
 -->
 
 
