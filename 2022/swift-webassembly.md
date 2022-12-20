@@ -12,9 +12,9 @@ Swift言語は、アプリケーションやコマンドラインツールでの
 
 [WebAssembly](https://webassembly.org/) は、Webブラウザ上で実行できる実行バイナリ形式です。
 
-この実行バイナリは、ブラウザに組み込まれた仮想マシン上で実行されます。WebAssemblyはモダンな主要Webブラウザ各種でサポートされています。WebAssemblyの活用事例として、Google Meet、Google Earth、Figma、eBay、などが知られています。
+この実行バイナリは、Webブラウザに組み込まれた仮想マシン上で実行されます。WebAssemblyはモダンな主要Webブラウザ各種でサポートされています。WebAssemblyの活用事例として、Google Meet、Google Earth、Figma、eBay、などが知られています。
 
-ブラウザ上で動作するプログラムにはすでにJavaScriptがあります。しかしWebAssemblyは、JavaScriptのような特定のプログラミング言語ではなく汎用的な実行バイナリ形式であるため、さまざまな言語で実行バイナリが作成できます。
+Webブラウザ上で動作するプログラムにはすでにJavaScriptがあります。しかしWebAssemblyは、JavaScriptのような特定のプログラミング言語ではなく汎用的な実行バイナリ形式であるため、さまざまな言語で実行バイナリが作成できます。
 
 WebAssemblyバイナリの生成方法でよく知られているものは以下があります。
 
