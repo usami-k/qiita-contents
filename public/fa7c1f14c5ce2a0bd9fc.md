@@ -8,6 +8,7 @@ private: false
 updated_at: '2016-07-16T00:53:59+09:00'
 id: fa7c1f14c5ce2a0bd9fc
 organization_url_name: null
+slide: false
 ---
 Haskell 開発環境のインストールは、以前は Haskell Platform を使うのが定番でしたが、現在は [Stack](http://haskellstack.org/) を使うのが定番となっています。
 

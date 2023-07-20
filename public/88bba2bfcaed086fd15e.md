@@ -6,6 +6,7 @@ private: false
 updated_at: '2019-03-12T00:12:47+09:00'
 id: 88bba2bfcaed086fd15e
 organization_url_name: null
+slide: false
 ---
 # AdditiveArithmetic とは
 

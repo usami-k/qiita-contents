@@ -8,6 +8,7 @@ private: false
 updated_at: '2022-12-20T14:14:11+09:00'
 id: 0b1cae5dca2a0c9d47ad
 organization_url_name: yumemi
+slide: false
 ---
 Swift言語は、アプリケーションやコマンドラインツールでの活用がよく知られており、サーバサイドでの活用もできます。実は、WebAssemblyを使うとWebフロンドエンドでの活用も可能になります。
 
