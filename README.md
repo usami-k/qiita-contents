@@ -1,5 +1,7 @@
 # Qiita Contents
 
+[![Publish articles](https://github.com/usami-k/qiita-contents/actions/workflows/publish.yml/badge.svg)](https://github.com/usami-k/qiita-contents/actions/workflows/publish.yml)
+
 [usamik26](https://qiita.com/usamik26) のQiita記事のリポジトリです。
 
 ## GitHub連携
