@@ -1,13 +1,13 @@
 ---
 title: GitHubで複数のコミットメールアドレスを使い分ける
 tags:
-  - 'Git'
-  - 'GitHub'
-  - 'GnuPG'
-  - 'gpg'
+  - Git
+  - GitHub
+  - gpg
+  - GnuPG
 private: false
-updated_at: ''
-id: null
+updated_at: '2023-07-24T22:48:14+09:00'
+id: f7a69baccd6a41734a6f
 organization_url_name: yumemi
 slide: false
 ---
