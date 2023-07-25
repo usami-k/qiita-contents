@@ -3,8 +3,8 @@ title: macOSのシステム言語設定を日本語にしたままアプリの�
 tags:
   - macOS
 private: false
-updated_at: ''
-id: null
+updated_at: '2023-07-25T17:59:38+09:00'
+id: 7766366017b9d29785a4
 organization_url_name: yumemi
 slide: false
 ---
