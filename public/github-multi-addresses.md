@@ -6,7 +6,7 @@ tags:
   - gpg
   - GnuPG
 private: false
-updated_at: '2023-07-24T22:48:14+09:00'
+updated_at: '2023-07-25T13:18:15+09:00'
 id: f7a69baccd6a41734a6f
 organization_url_name: yumemi
 slide: false
@@ -63,7 +63,28 @@ git config user.email "YOUR_EMAIL"
 
 # GnuPG署名の設定
 
-GitコミットにはGnuPGによるデジタル署名ができます。これは「[GitのコミットにGnuPGで署名する - Qiita](https://qiita.com/usamik26/items/6b816db27b7661611d59)」という記事で紹介しています。このGnuPG署名もコミットメールアドレスと関連付けされています。そのため、複数のメールアドレスを使い分ける場合にはGnuPG署名も複数用意する必要があります。
+GitコミットにはGnuPGによるデジタル署名ができます。これは「[GitのコミットにGnuPGで署名する - Qiita](https://qiita.com/usamik26/items/6b816db27b7661611d59)」という記事で紹介しています。このGnuPG署名もコミットメールアドレスと関連付けされています。
+
+そのため、複数のメールアドレスを使い分ける場合にはそれらのメールアドレスに紐づいたGnuPGキーを用意する必要があります。対応方法は2通りあります。
+
+- 複数のメールアドレスをひとつのGnuPGキーに紐づける
+- 複数のメールアドレスに対してそれぞれGnuPGキーを作成する
+
+前者のほうが、複数のGnuPGキーを扱わずにすむため管理しやすくなります。
+
+## ひとつのGnuPGキーへの複数のメールアドレスの関連付け
+
+複数のメールアドレスをひとつのGnuPGキーに紐づけるには、まずひとつのメールアドレスに対してGnuPGキーを作成します。次に、そのGnuPGキーに対してメールアドレスの関連付けを追加します。
+
+関連付けの追加は `gpg --edit-key` コマンドで行います。この詳細は「[GPG キーとメールの関連付け - GitHub Docs](https://docs.github.com/ja/authentication/managing-commit-signature-verification/associating-an-email-with-your-gpg-key?platform=mac)」に書いてあります。
+
+それ以外は「[GitのコミットにGnuPGで署名する - Qiita](https://qiita.com/usamik26/items/6b816db27b7661611d59)」で記載しているとおりです。
+
+## 複数のGnuPGキーを扱う場合の設定
+
+基本的には前述の方法が管理しやすいためオススメですが、複数のGnuPGキーを扱うパターンも紹介しておきます。
+
+複数のメールアドレスに対してそれぞれGnuPGキーを作成するには、GnuPGキーの作成手順を必要な数だけ繰り返します。ひとつのGitHubアカウントには複数のGnuPGキーが登録できます。
 
 そのパソコンでのGitコミットに使うデフォルトのGnuPG署名キーを設定するには、次のようにします。この設定は、`~/.gitconfig`に保存されます。
 
