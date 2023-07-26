@@ -61,6 +61,15 @@ git config user.email "YOUR_EMAIL"
 
 これは「[コミットメールアドレスを設定する - GitHub Docs](https://docs.github.com/ja/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address)」に書いてあります。
 
+:::note
+リポジトリごとに設定を切り替える方法として、git configの `includeIf` を使う方法もあります。この機能はgit configのドキュメントの「[Conditional includes](https://git-scm.com/docs/git-config#_conditional_includes)」に記載されています。たとえば、特定のリモートリポジトリのURLにマッチしたら別の設定ファイルを読み込むように設定できます。
+
+```
+[includeIf "hasconfig:remote.*.url:git@github.com:mycompany/**"]
+  path = ~/.gitconfig_mycompany
+```
+:::
+
 # GnuPG署名の設定
 
 GitコミットにはGnuPGによるデジタル署名ができます。これは「[GitのコミットにGnuPGで署名する - Qiita](https://qiita.com/usamik26/items/6b816db27b7661611d59)」という記事で紹介しています。このGnuPG署名もコミットメールアドレスと関連付けされています。
