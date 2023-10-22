@@ -1,16 +1,15 @@
 ---
 title: Rust Nannouでクリエイティブコーディング
 tags:
-  - 'Rust'
-  - 'nannou'
-  - 'CreativeCoding'
-  - 'GenerativeArt' 
+  - Rust
+  - CreativeCoding
+  - GenerativeArt
+  - nannou
 private: true
-updated_at: ''
-id: null
+updated_at: '2023-10-23T00:16:20+09:00'
+id: dd3681a047e56656146a
 organization_url_name: null
 slide: false
-ignorePublish: false
 ---
 ## クリエイティブコーディングとは
 
