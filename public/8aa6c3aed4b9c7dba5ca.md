@@ -7,6 +7,7 @@ updated_at: '2012-10-10T19:36:34+09:00'
 id: 8aa6c3aed4b9c7dba5ca
 organization_url_name: null
 slide: false
+ignorePublish: false
 ---
 
 以下のコマンドで、現在のブランチ名を表示できる。

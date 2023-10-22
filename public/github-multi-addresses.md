@@ -10,6 +10,7 @@ updated_at: '2023-07-26T10:24:37+09:00'
 id: f7a69baccd6a41734a6f
 organization_url_name: yumemi
 slide: false
+ignorePublish: false
 ---
 GitHubでは、個人用と仕事用とで同じGitHubアカウントを使うことが推奨されています。たとえば、「[複数の個人アカウントのマージ - GitHub Docs](https://docs.github.com/ja/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-your-personal-account/merging-multiple-personal-accounts)」にヒントとして書かれています。
 
