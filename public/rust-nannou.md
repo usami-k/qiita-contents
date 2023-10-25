@@ -13,11 +13,18 @@ slide: false
 ---
 ## クリエイティブコーディングとは
 
-クリエイティブコーディングとは、何らかの表現を創造することを目的としたプログラミングのことです。ソフトウェア開発で行うプログラミングは一般に何らかの機能を実現することを目的としますが、それとは異なっています。クリエイティブコーディングの愛好家たちによって、ビジュアルアートやサウンドアートなどの作品を制作する活動が行われています。アルゴリズムや数学的なルールに基づいて作品を生成するジェネラティブアートでも、クリエイティブコーディングの手法を使うことがあります。
+クリエイティブコーディングとは、何らかの表現を創造することを目的としたプログラミングのことです。ソフトウェア開発で行うプログラミングは一般的に何らかの機能を実現することを目的としますが、それとは異なっています。クリエイティブコーディングの愛好家たちによって、ビジュアルアートやサウンドアートなどの作品を制作する活動が行われています。アルゴリズムや数学的なルールに基づいて作品を生成するジェネラティブアートでも、クリエイティブコーディングの手法を使うことがあります。
 
-クリエイティブコーディングのためのツールキットがいろいろ存在しています。たとえば、Processing（Java または Python）、p5.js（JavaScript）、openFrameworks（C++）などが有名です。有名なツールキットを使えば、情報が多くサンプルコードも豊富です。一方で、プログラミングが好きな人ならば、自分の好きな言語でクリエイティブコーディングをしたいとも考えるでしょう。
+クリエイティブコーディングのためのツールキットはいろいろ存在しています。たとえば、Processing[^processing]（Java または Python）、p5.js[^p5js]（JavaScript）、openFrameworks[^openFrameworks]（C++）などが有名です。有名なツールキットを使えば、情報が多くサンプルコードも豊富です。一方で、プログラミングが好きな人ならば、自分の好きな言語でクリエイティブコーディングをしたいとも考えるでしょう。
 
-今回は、Rust 言語でクリエイティブコーディングをするためのツールキットである Nannou を紹介します。なお、今回の記事では Rust 言語の開発環境はすでに整っていることを前提とします。Rust の開発環境の構築については、[Rust 公式サイト](https://www.rust-lang.org/ja/tools/install)を参照してください。
+[^processing]: https://processing.org/
+[^p5js]: https://p5js.org/
+[^openFrameworks]: https://openframeworks.cc/ja/
+
+今回は、Rust 言語でクリエイティブコーディングをするためのツールキットである Nannou[^nannou] を紹介します。なお、今回の記事では Rust 言語の開発環境はすでに整っていることを前提とします。Rust の開発環境の構築については、Rust 公式サイト[^rust]を参照してください。
+
+[^nannou]: https://nannou.cc/
+[^rust]: https://www.rust-lang.org/ja/
 
 ## はじめてのNannou
 
@@ -55,9 +62,9 @@ fn view(app: &App, frame: Frame) {
 
 `cargo run` で実行すると、ウィンドウが表示されて中央に円が描画されます。
 
-![](https://raw.githubusercontent.com/usami-k/qiita-contents/main/images/rust-nannou_images/sketch1.png)
+<img src="https://raw.githubusercontent.com/usami-k/qiita-contents/main/images/rust-nannou_images/sketch1.png" width="320">
 
-コードをざっと見ておきましょう。まず、`main` 関数の中で `nannou::sketch` 関数を呼んでいます。`sketch` 関数は `view` 関数を引数にとり、`SketchBuilder` を返します。`SketchBuilder` の `run` 関数を呼ぶことで、ウィンドウが表示されます。
+コードをざっと見てみましょう。まず、`main` 関数の中で `nannou::sketch` 関数を呼んでいます。`sketch` 関数は `view` 関数を引数にとり、`SketchBuilder` を返します。`SketchBuilder` の `run` 関数を呼ぶことで、ウィンドウが表示されます。
 
 `view` 関数は `App` と `Frame` を引数に取ります。`view` 関数の中で `app.draw` 関数を呼んで `Draw` インスタンスを取得しています。`Draw` インスタンスの各種関数で図形描画を指示したあと、`to_frame` 関数で実際にレンダリングして出力します。
 
@@ -85,13 +92,15 @@ fn view(app: &App, frame: Frame) {
 
 基本的な図形の描画に使う関数をいくつか紹介します。
 
-* `ellipse()` - 楕円を描画します。
-* `rect()` - 長方形を描画します。
-* `quad()` - 四角形を描画します。
-* `tri()` - 三角形を描画します。
-* `line()` - 線を描画します。
-* `polyline()` - 折れ線を描画します。
-* `polygon()` - 多角形を描画します。
+| 関数名 | 概要 |
+| --- | --- |
+| `ellipse()` | 楕円を描画します。 |
+| `rect()` | 長方形を描画します。 |
+| `quad()` | 四角形を描画します。 |
+| `tri()` | 三角形を描画します。 |
+| `line()` | 線を描画します。 |
+| `polyline()` | 折れ線を描画します。 |
+| `polygon()` | 多角形を描画します。 |
 
 これらの関数はどれも `Drawing` インスタンスを返します。このインスタンスに対して `color` 関数で色を指定したり、`w_h` 関数で幅と高さを指定したり、`x_y` 関数で位置を指定したりできます。これらの関数は再び `Drawing` インスタンスを返すので、メソッドチェインで呼び出すことができます。
 
@@ -143,7 +152,9 @@ fn view(app: &App, frame: Frame) {
 
 アニメーションが実現できたら、それを動画ファイルとして保存したくなります。その方法を考えてみます。
 
-ひとつは、Nannou の機能を利用する方法が考えられます。次のような関数を作って `view` 関数の中から呼び出すことで、各フレームを静止画ファイルとして出力できます。あとは、この静止画ファイルから ffmpeg などのツールを使って動画ファイルを生成できます。
+ひとつは、Nannou の機能を利用する方法が考えられます。次のような関数を作って `view` 関数の中から呼び出すことで、各フレームを静止画ファイルとして出力できます。あとは、この静止画ファイルから FFmpeg[^ffmpeg] などのツールを使って動画ファイルを生成できます。
+
+[^ffmpeg]: https://www.ffmpeg.org/
 
 ```rust
 fn capture_frame(app: &App, frame: Frame) {
@@ -157,9 +168,9 @@ fn capture_frame(app: &App, frame: Frame) {
 }
 ```
 
-ただ、この方法は欠点があります。アニメーション描画の処理とファイルへの出力の処理を両方行うために処理が重くなり、場合によってはアニメーションが滑らかに動かなくなります。画面上の表示だけでなく、動画ファイルでも動きがかくついてしまいます。
+ただ、この方法には欠点があります。アニメーションの描画処理とファイルへの出力処理を両方行うため処理が重くなり、場合によってはアニメーションが滑らかに動かなくなります。画面上の表示だけでなく、動画ファイルでも動きがかくついてしまいます。
 
-そのような現象が起こる場合には、別の手段でウィンドウの画面収録をするのがよいでしょう。たとえば Mac の場合、標準の画面収録機能（⌘+Shift+5）を使う、QuickTime Player の画面収録機能を使う、サードパーティ製の画面収録アプリを使う、などの方法があります。
+そのような現象が起こる場合は、別の手段としてウィンドウの画面収録をするとよいでしょう。たとえば macOS の場合、標準の画面収録機能（⌘+Shift+5）を使う、QuickTime Player の画面収録機能を使う、サードパーティ製の画面収録アプリを使う、などの方法があります。
 
 ## Nannou App
 
@@ -199,11 +210,11 @@ fn view(app: &App, model: &Model, frame: Frame) {
 }
 ```
 
-こちらもコードをざっと見ておきましょう。まず、`main` 関数の中で `nannou::app` 関数を呼んでいます。`app` 関数は `model` 関数を引数にとり、`Builder` を返します。`Builder` の `run` 関数を呼ぶことで、ウィンドウが表示されます。
+こちらもコードをざっと見てみましょう。まず、`main` 関数の中で `nannou::app` 関数を呼んでいます。`app` 関数は `model` 関数を引数にとり、`Builder` を返します。`Builder` の `run` 関数を呼ぶことで、ウィンドウが表示されます。
 
 `model` 関数は `Model` 構造体を返します。この Model を使うことで、描画に使う値を保持できます。また、`model` 関数の中でウィンドウを生成しています。`nannou::sketch` の場合は明示的に生成する処理を書かなくてもウィンドウが生成されますが、`nannou::app` の場合は自分で処理を書きます。生成したウィンドウに対して `view` 関数を指定しています。
 
-`view` 関数は `Model` を引数に取ります。先ほど生成した Model をここで使用できます。このコードでは、描画に使う色を Model で保持して描画時に使用しています。
+`view` 関数は `Model` を引数に取ります。先ほど生成した Model をここで使用します。このコードでは、描画に使う色を Model で保持して描画時に使用しています。
 
 次に、アニメーションの例を書き換えてみましょう。先ほどの App の例では、`model` 関数で `Model` を生成して、`view` 関数で `Model` を参照するだけでした。実行中に `Model` の値を更新するには `update` 関数を使います。
 
@@ -321,10 +332,15 @@ fn view(app: &App, model: &Model, frame: Frame) {
 
 `random_range` 関数を使って角度をランダムに生成しています。これは実行のたびに異なる結果が得られます。実行したときの例を次に示します。
 
-![](https://raw.githubusercontent.com/usami-k/qiita-contents/main/images/rust-nannou_images/randomwalk.png)
+<img src="https://raw.githubusercontent.com/usami-k/qiita-contents/main/images/rust-nannou_images/randomwalk.png" width="320">
 
 この例をさらに発展させることも可能です。たとえば、ウィンドウの外に出ていかないようにする、時間経過にあわせて色を変化させる、移動する方向を限定するなどが考えられます。
 
 ## まとめ
 
-Rust Nannou でクリエイティブコーディングをする方法を紹介しました。より詳しい情報は [Nannou の公式サイト（https://nannou.cc/）](https://nannou.cc/) を参照してください。
+Rust Nannou でクリエイティブコーディングをする方法を紹介しました。より詳しい情報は Nannou 公式のガイド[^nannou-guide]や API リファレンス[^nannou-ref]を参照してください。また、Nannou の GitHub リポジトリ[^nannou-repo]にはサンプルコードもあります。
+
+[^nannou-guide]: https://guide.nannou.cc/
+[^nannou-ref]: https://docs.rs/nannou/
+[^nannou-repo]: https://github.com/nannou-org/nannou/
+
