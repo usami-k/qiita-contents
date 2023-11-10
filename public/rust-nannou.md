@@ -5,11 +5,12 @@ tags:
   - CreativeCoding
   - GenerativeArt
   - nannou
-private: true
+private: false
 updated_at: '2023-10-26T15:25:39+09:00'
 id: dd3681a047e56656146a
-organization_url_name: null
+organization_url_name: yumemi
 slide: false
+ignorePublish: false
 ---
 ## クリエイティブコーディングとは
 
