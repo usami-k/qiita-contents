@@ -5,7 +5,6 @@
     "textlint-filter-rule-allowlist": "*",
     "textlint-filter-rule-comments": "*",
     "textlint-rule-preset-ja-spacing": "*",
-    "textlint-rule-preset-ja-technical-writing": "*",
-    "textlint-rule-spellcheck-tech-word": "*"
+    "textlint-rule-preset-ja-technical-writing": "*"
   }
 }
