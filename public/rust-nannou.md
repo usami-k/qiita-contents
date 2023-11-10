@@ -344,3 +344,6 @@ Rust Nannou でクリエイティブコーディングをする方法を紹介�
 [^nannou-ref]: https://docs.rs/nannou/
 [^nannou-repo]: https://github.com/nannou-org/nannou/
 
+## 宣伝
+
+本記事は「[ゆめみ大技林 '23 (2)](https://techbookfest.org/product/2nuPxEDA5h1DQY26u38mrY)」に収録した記事です。他のメンバーの記事もありますので、ぜひご覧ください。
