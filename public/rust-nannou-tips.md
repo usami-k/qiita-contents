@@ -6,11 +6,10 @@ tags:
   - GenerativeArt
   - nannou
 private: true
-updated_at: ''
-id: null
+updated_at: '2023-12-02T20:42:26+09:00'
+id: bcca88ea7828bb5908d3
 organization_url_name: null
 slide: false
-ignorePublish: false
 ---
 先月に技術書典15や技書博9で頒布した[『ゆめみ大技林 '23 (2)』](https://booth.pm/ja/items/5237542)で、Rustでクリエイティブコーディングをする記事を書きました。この内容はQiitaにも投稿しています。
 
