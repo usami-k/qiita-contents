@@ -1,12 +1,12 @@
 ---
 title: SwiftのObservationフレームワークによる値の監視
 tags:
+  - iOS
   - Swift
   - SwiftUI
-  - iOS
 private: false
-updated_at: ''
-id: null
+updated_at: '2023-12-13T23:59:03+09:00'
+id: 6544879e3aa8343b709f
 organization_url_name: yumemi
 slide: false
 ignorePublish: false
