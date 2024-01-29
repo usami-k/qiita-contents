@@ -1,12 +1,12 @@
 ---
 title: プログラミング向けフォント「0xProto」の紹介
 tags:
-  - 'font'
-  - 'エディタ'
-  - '開発環境'
+  - 開発環境
+  - font
+  - エディタ
 private: true
-updated_at: ''
-id: null
+updated_at: '2024-01-29T23:30:55+09:00'
+id: 2ab0c4b88bf7c00845dd
 organization_url_name: null
 slide: false
 ignorePublish: false
