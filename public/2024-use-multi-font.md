@@ -5,8 +5,8 @@ tags:
   - font
   - エディタ
 private: false
-updated_at: ''
-id: null
+updated_at: '2024-03-03T23:07:17+09:00'
+id: 2172fd236fbbe0ad722b
 organization_url_name: yumemi
 slide: false
 ignorePublish: false
