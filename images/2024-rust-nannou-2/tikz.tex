@@ -1,0 +1,49 @@
+\documentclass{jlreq}
+\usepackage[active,tightpage]{preview}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{angles,quotes}
+
+\begin{document}
+
+\begin{preview}
+    \begin{tikzpicture}
+        \coordinate (O) at (0,0);
+        \coordinate (P) at (2,2);
+        \coordinate (Q) at (-3,3);
+        \fill (O) circle (2pt) node[below]{$O$};
+        \fill (P) circle (2pt) node[right]{$P$};
+        \fill (Q) circle (2pt) node[left]{$Q$};
+        \draw[thick,-{Stealth}] (O)--(P) node[midway,below right]{$\vec{OP}$};
+        \draw[dashed,-{Stealth}] (O)--(Q) node[midway,below left]{$\vec{OQ}$};
+        \draw[thick,-{Stealth}] (P)--(Q) node[midway,above]{$\vec{PQ}$};
+        \path (P)--(Q) coordinate[pos=0.2] (P2);
+        \fill (P2) circle (2pt);
+        \draw[thick,-{Stealth}] (P)--(P2) node[midway,above right]{$\vec{PQ}*0.1$};
+    \end{tikzpicture}
+\end{preview}
+
+\begin{preview}
+    \begin{tikzpicture}
+        \coordinate (O) at (0,0);
+        \coordinate (P0) at (0:3);
+        \coordinate (P1) at (40:3);
+        \coordinate (P2) at (80:3);
+        \coordinate (P3) at (120:3);
+        \coordinate (P4) at (160:3);
+        \fill (P0) circle (2pt);
+        \fill (P1) circle (2pt);
+        \fill (P2) circle (2pt);
+        \fill (P3) circle (2pt);
+        \draw[thick] (P0)--(P1)--(P2)--(P3)--(P4);
+        \draw[dashed] (O)--(P0);
+        \draw[dashed] (O)--(P1);
+        \draw[dashed] (O)--(P2);
+        \draw[dashed] (O)--(P3);
+        \draw pic[draw,"$\frac{2\pi}{n}$",angle eccentricity=2] {angle=P0--O--P1};
+        \draw pic[draw,fill=gray,"$\frac{2\pi}{n}$",angle eccentricity=2] {angle=P1--O--P2};
+        \draw pic[draw,"$\frac{2\pi}{n}$",angle eccentricity=2] {angle=P2--O--P3};
+    \end{tikzpicture}
+\end{preview}
+
+\end{document}
