@@ -2,12 +2,12 @@
 title: キューブパズルの技術同人誌を出した話
 tags:
   - 技術書
-  - 技術同人誌
   - 技術書典
+  - 技術同人誌
   - 技書博
 private: false
-updated_at: ''
-id: null
+updated_at: '2024-12-08T10:28:00+09:00'
+id: bef66935c070bcadad01
 organization_url_name: yumemi
 slide: false
 ignorePublish: false
