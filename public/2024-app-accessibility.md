@@ -1,13 +1,13 @@
 ---
 title: モバイルアプリのアクセシビリティを改めて勉強している話
 tags:
-  - 'アクセシビリティ'
-  - 'モバイルアプリ'
-  - 'iOS'
-  - 'Android'
+  - Android
+  - iOS
+  - アクセシビリティ
+  - モバイルアプリ
 private: false
-updated_at: ''
-id: null
+updated_at: '2024-12-12T08:42:46+09:00'
+id: 46eccb7848bc461fcb95
 organization_url_name: yumemi
 slide: false
 ignorePublish: false
