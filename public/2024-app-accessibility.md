@@ -6,7 +6,7 @@ tags:
   - アクセシビリティ
   - モバイルアプリ
 private: false
-updated_at: '2024-12-12T08:42:46+09:00'
+updated_at: '2024-12-12T13:26:57+09:00'
 id: 46eccb7848bc461fcb95
 organization_url_name: yumemi
 slide: false
