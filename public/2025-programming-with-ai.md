@@ -1,14 +1,14 @@
 ---
 title: AIをプログラミングに活用するためのIDEやツール
 tags:
-  - AI
-  - Cursor
-  - JetBrains
-  - VisualStudioCode
   - Xcode
+  - JetBrains
+  - AI
+  - VisualStudioCode
+  - cursor
 private: false
-updated_at: ''
-id: null
+updated_at: '2025-01-05T09:52:26+09:00'
+id: 68518c4f023d49d317af
 organization_url_name: yumemi
 slide: false
 ignorePublish: false
