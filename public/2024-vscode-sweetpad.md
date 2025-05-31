@@ -3,7 +3,7 @@ title: SweetPadを使ってVisual Studio CodeやCursorでiOSアプリ開発を�
 tags:
   - Xcode
   - iOS
-  - VisualStudioCode
+  - VSCode
   - cursor
 private: false
 updated_at: '2024-12-23T19:53:35+09:00'

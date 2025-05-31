@@ -4,10 +4,10 @@ tags:
   - Xcode
   - JetBrains
   - AI
-  - VisualStudioCode
+  - VSCode
   - cursor
 private: false
-updated_at: '2025-01-06T11:37:07+09:00'
+updated_at: '2025-04-18T09:17:51+09:00'
 id: 68518c4f023d49d317af
 organization_url_name: yumemi
 slide: false
@@ -35,6 +35,11 @@ JetBrains製の各種IDEに、AIアシスタントを統合できます。
 JetBrains AIアシスタントも多機能です。対話的な編集機能、チャット機能、コミットメッセージ生成機能、入力補完機能、などがあります。JetBrainsは言語ごとにIDEがわかれていますが、そのぶん言語ごとの環境が整えやすく、AIアシスタントがその言語のことを分かっている感じがあります。
 
 JetBrains AIは、JetBrains IDE自体とは別にサブスクリプション購入が必要です。日本向けの価格設定があり年額14,000円（約90ドル）です。なお、米国向けの価格設定は年額100ドルです。
+
+:::note
+2025-04-18 追記：IDEのライセンスにAIが含まれるようになりました。別途サブスクリプションを購入しなくてもAIが利用可能です。
+https://blog.jetbrains.com/ja/blog/2025/04/16/jetbrains-ides-go-ai/
+:::
 
 ## GitHub Copilot + Visual Studio Code
 
@@ -66,6 +71,10 @@ ChatGPTのサービス自体は無料でも利用可能ですが、Macアプリ�
 | JetBrains AI | Pro | 14,000円（約90ドル） |
 | GitHub Copilot | Pro | 100ドル |
 | ChatGPT | Plus | 240ドル |
+
+:::note
+2025-04-18 追記：JetBrains AIはIDEのライセンスに含まれるようになりました。
+:::
 
 ## 個人的な利用状況
 
